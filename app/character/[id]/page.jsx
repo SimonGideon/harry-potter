@@ -13,10 +13,6 @@ const CharacterDetail = ({ params: { id } }) => {
     dispatch(fetchCharacterById(id));
   }, [dispatch, id]);
 
-  if (isLoading) {
-    return <div className="text-center mt-8">Loading...</div>;
-  }
-
   if (error) {
     return <div className="text-center mt-8">Error: {error}</div>;
   }

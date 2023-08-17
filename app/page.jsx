@@ -11,7 +11,6 @@ const myFont = localFont({ src: "./asset/Beyond_Wonderland.ttf" });
 
 const Home = () => {
   const characters = useSelector((state) => state.characters.data);
-  const isLoading = useSelector((state) => state.characters.isLoading);
   const error = useSelector((state) => state.characters.error);
 
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredCharacters(characters);
+      setFilteredCharacters(characters);
   }, [characters]);
 
   const handleSearch = (query) => {
@@ -37,11 +36,6 @@ const Home = () => {
       setIsSearchPerformed(true);
     }
   };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
