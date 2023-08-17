@@ -21,13 +21,15 @@ const characterDetail = ({ params: { id } }) => {
     return <div>Error: {error}</div>;
   }
   const character = selectedCharacter[0];
-
+  if (!character) {
+    return <p>Error: Character data not available</p>;
+  }
   return (
     <div>
       <h1>Character {id}</h1>
-      <p>Name: {character?.name}</p>
-      <p>Species: {character?.species}</p>
-      <p>Gender: {character?.gender}</p>
+      <p>Name: {character.name}</p>
+      <p>Species: {character.species}</p>
+      <p>Gender: {character.gender}</p>
     </div>
   );
 };
