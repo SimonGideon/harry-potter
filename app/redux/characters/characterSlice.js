@@ -14,3 +14,18 @@ export const fetchCharacters = createAsyncThunk(
       }
     }
   );
+
+  export const fetchCharacterById = createAsyncThunk(
+    "characters/fetchCharacterById",
+    async (id) => {
+      try {
+          const response = await axios(`${BASE_API}/character/${id}`, {});
+          return response.data;
+      } catch (error) {
+          throw new Error("Failed to fetch data");
+      }
+    }
+  );
+
+  const characterSlice = createSlice({});
+  
