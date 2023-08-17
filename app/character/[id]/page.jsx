@@ -26,10 +26,23 @@ const characterDetail = ({ params: { id } }) => {
   }
   return (
     <div>
-      <h1>Character {id}</h1>
+      <img src={character.image} alt={character.name}  />
       <p>Name: {character.name}</p>
       <p>Species: {character.species}</p>
       <p>Gender: {character.gender}</p>
+      <p>House: {character.house}</p>
+      <p>D.O.B: {character.dateOfBirth}</p>
+      <p>Birth Year: {character.yearOfBirth}</p>
+      <p>Wizard: {character.wizard? 'wizard': 'not wizard'}</p>
+      <p>Ancestry: {character.ancestry}</p>
+      <p>Eye COlor: {character.eyeColour}</p>
+      <p>Hair Color: {character.hairColour}</p>
+      <p>{character.wand.wood}</p>
+      <p>{character.wand.core}</p>
+      <p>{character.wand.length}</p>
+      <p>{character.patronus}</p>
+      <p>{character.actor}</p>
+      <p>{character.alive? 'Alive': 'Dead'}</p>
     </div>
   );
 };
