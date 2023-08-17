@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 4, 15, 21;
-    --background-end-rgb: 9, 24, 31; 
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 4, 15, 21;
+  --background-end-rgb: 9, 24, 31;
 }
 
 body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb)) no-repeat;
-  }
-  
-
-.search-box  {
-    color: rgb((--background-end-rgb))
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)) no-repeat;
 }
+
+.name {
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000
+}
+
