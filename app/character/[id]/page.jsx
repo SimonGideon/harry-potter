@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCharacterById } from "../../redux/characters/characterSlice";
 
-const characterDetail = ({ params: { id } }) => {
+const CharacterDetail = ({ params: { id } }) => {
   const dispatch = useDispatch();
   const { selectedCharacter, isLoading, error } = useSelector(
     (state) => state.characters
@@ -14,36 +14,67 @@ const characterDetail = ({ params: { id } }) => {
   }, [dispatch, id]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-center mt-8">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-center mt-8">Error: {error}</div>;
   }
+
   const character = selectedCharacter[0];
+
   if (!character) {
-    return <p>Error: Character data not available</p>;
+    return (
+      <p className="text-center mt-8">Error: Character data not available</p>
+    );
   }
+
   return (
-    <div>
-      <img src={character.image} alt={character.name}  />
-      <p>Name: {character.name}</p>
-      <p>Species: {character.species}</p>
-      <p>Gender: {character.gender}</p>
-      <p>House: {character.house}</p>
-      <p>D.O.B: {character.dateOfBirth}</p>
-      <p>Birth Year: {character.yearOfBirth}</p>
-      <p>Wizard: {character.wizard? 'wizard': 'not wizard'}</p>
-      <p>Ancestry: {character.ancestry}</p>
-      <p>Eye COlor: {character.eyeColour}</p>
-      <p>Hair Color: {character.hairColour}</p>
-      <p>{character.wand.wood}</p>
-      <p>{character.wand.core}</p>
-      <p>{character.wand.length}</p>
-      <p>{character.patronus}</p>
-      <p>{character.actor}</p>
-      <p>{character.alive? 'Alive': 'Dead'}</p>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="col-span-1">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bio-data">
+              <p className="text-xl font-semibold mb-4">{character.name}</p>
+              <p>Date of Birth: {character.dateOfBirth}</p>
+              <p>Gender: {character.gender}</p>
+              <p>Actor: {character.actor}</p>
+              <p>Status: {character.alive ? "Alive" : "Dead"}</p>
+            </div>
+            <div className="w-1/1">
+              <img
+                src={character.image}
+                alt={character.name}
+                className="mx-auto w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+          <p className="mt-6">
+            In the world of magic, {character.name} stands out as a{" "}
+            {character.gender === "male" ? "bold" : "courageous"} individual.
+            Born on {character.dateOfBirth}, {character.name} ventured into the
+            realm of wizards and witches with an unwavering spirit.
+          </p>
+
+          <p className="mt-4">
+            Raised in the renowned {character.house} house, {character.name}{" "}
+            learned the secrets of spells and potions, forging lifelong
+            friendships with fellow students. {character.name}'s{" "}
+            {character.gender === "male" ? "bold" : "daring"} actions in the
+            face of adversity earned a place in wizarding history.
+          </p>
+
+          <p className="mt-4">
+            With {character.eyeColour} eyes that reflect {character.hairColour}{" "}
+            hair, {character.name} possesses a wand crafted from{" "}
+            {character.wand.wood}, known for its {character.wand.core} core and
+            a length of {character.wand.length}. This magical tool aids in
+            manifesting spells beyond imagination.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
-export default characterDetail;
+
+export default CharacterDetail;
