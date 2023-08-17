@@ -15,7 +15,7 @@ const CharacterDetail = ({ params: { id } }) => {
   }, [dispatch, id]);
 
   if (error) {
-    return <div className="text-center mt-8">Error: {error}</div>;
+    return <ConnectionError/>;
   }
 
   
