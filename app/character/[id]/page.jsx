@@ -5,9 +5,10 @@ import { fetchCharacterById } from "../../redux/characters/characterSlice";
 
 const CharacterDetail = ({ params: { id } }) => {
   const dispatch = useDispatch();
-  const { selectedCharacter, isLoading, error } = useSelector(
+  const { selectedCharacter, error } = useSelector(
     (state) => state.characters
   );
+  const character = selectedCharacter[0];
 
   useEffect(() => {
     dispatch(fetchCharacterById(id));
@@ -17,9 +18,9 @@ const CharacterDetail = ({ params: { id } }) => {
     return <div className="text-center mt-8">Error: {error}</div>;
   }
 
-  const character = selectedCharacter[0];
+  
 
-  if (!character) {
+  if (!character && !error) {
     return (
       <p className="text-center mt-8">Error: Character data not available</p>
     );
