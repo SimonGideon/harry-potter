@@ -16,6 +16,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  const [isSearchPerformed, setIsSearchPerformed] = useState(false);
   useEffect(() => {
     dispatch(fetchCharacters());
   }, [dispatch]);
@@ -27,11 +28,13 @@ const Home = () => {
   const handleSearch = (query) => {
     if (query === "") {
       setFilteredCharacters(characters);
+      setIsSearchPerformed(false);
     } else {
       const filtered = characters.filter((character) =>
         character.name.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredCharacters(filtered);
+      setIsSearchPerformed(true);
     }
   };
 
@@ -46,6 +49,9 @@ const Home = () => {
   return (
     <div className="p-10 md:p-12">
       <SearchBar onSearch={handleSearch} />
+      {filteredCharacters.length === 0 && isSearchPerformed && ( // Display only if search is performed and no characters found
+        <p>No characters found.</p>
+      )}
       <h1 className="text-3xl font-bold mt-4 md:mt-8">All Characters</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 mt-4 md:mt-8">
          {filteredCharacters.map((character) => (
