@@ -12,3 +12,4 @@ I split the project into smaller tasks and sketched my wireframe for UI. Kanbanb
 Check it 👉 [Here](https://github.com/users/SimonGideon/projects/12)
 
 ## Deployment
+Deployed [Link](https://harry-potter-zeta.vercel.app/)
