@@ -1,8 +1,13 @@
 "use client";
 
-import store  from "./store";
+import Loading from "../components/loading";
+import store from "./store";
 import { Provider } from "react-redux";
 
 export function Providers({ children }) {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      <Loading>{children}</Loading>
+    </Provider>
+  );
 }
